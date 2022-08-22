@@ -16,7 +16,13 @@ const initialState = [
 const notesSlice = createSlice({
   name: 'notes',
   initialState,
-  reducers: {},
+  reducers: {
+    postAdded(state, action) {
+      state.push(action.payload)
+    },
+  },
 })
+
+export const { postAdded } = notesSlice.actions
 
 export default notesSlice.reducer
