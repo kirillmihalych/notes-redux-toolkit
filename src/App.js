@@ -1,7 +1,12 @@
 import React from 'react'
+import NotesList from './features/notes/NotesList'
 
 function App() {
-  return <>Hello, Notes! Chop is dish!</>
+  return (
+    <>
+      <NotesList />
+    </>
+  )
 }
 
 export default App
