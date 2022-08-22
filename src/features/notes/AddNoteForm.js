@@ -1,13 +1,28 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { nanoid } from '@reduxjs/toolkit'
 import styled from 'styled-components'
+
+import { noteAdded } from './notesSlice'
 
 const AddNoteForm = () => {
   const [title, setTitle] = useState('')
   const [text, setText] = useState('')
 
+  const dispatch = useDispatch()
+
   const handleSubmit = (e) => e.preventDefault()
   const onTitleChanged = (e) => setTitle(e.target.value)
   const onTextChanged = (e) => setText(e.target.value)
+
+  const onAddNoteClicked = () => {
+    if (title && text) {
+      dispatch(noteAdded({ id: nanoid(), title, content: text }))
+    }
+
+    setTitle('')
+    setText('')
+  }
 
   return (
     <Wrapper>
@@ -32,7 +47,11 @@ const AddNoteForm = () => {
           onChange={onTextChanged}
           className='addTextInput'
         ></textarea>
-        <button type='submit' className='btn add-btn'>
+        <button
+          type='submit'
+          className='btn add-btn'
+          onClick={onAddNoteClicked}
+        >
           Добавить запись
         </button>
       </form>

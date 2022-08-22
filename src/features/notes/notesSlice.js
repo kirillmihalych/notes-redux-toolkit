@@ -17,12 +17,12 @@ const notesSlice = createSlice({
   name: 'notes',
   initialState,
   reducers: {
-    postAdded(state, action) {
+    noteAdded(state, action) {
       state.push(action.payload)
     },
   },
 })
 
-export const { postAdded } = notesSlice.actions
+export const { noteAdded } = notesSlice.actions
 
 export default notesSlice.reducer
