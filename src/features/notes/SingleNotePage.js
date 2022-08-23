@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import styled from 'styled-components'
 
 const SingleNotePage = () => {
@@ -23,6 +23,7 @@ const SingleNotePage = () => {
       <article>
         <h2>{note.title}</h2>
         <p className='note-content'>{note.content}</p>
+        <Link to={`/editNote/${id}`}>Изменить</Link>
       </article>
     </Wrapper>
   )

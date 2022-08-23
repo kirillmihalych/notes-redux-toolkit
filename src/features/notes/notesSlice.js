@@ -20,9 +20,19 @@ const notesSlice = createSlice({
     noteAdded(state, action) {
       state.push(action.payload)
     },
+    noteEdited(state, action) {
+      const { id, title, text } = action.payload
+
+      const currentNote = state.find((note) => note.id === id)
+
+      if (currentNote) {
+        currentNote.title = title
+        currentNote.content = text
+      }
+    },
   },
 })
 
-export const { noteAdded } = notesSlice.actions
+export const { noteAdded, noteEdited } = notesSlice.actions
 
 export default notesSlice.reducer
