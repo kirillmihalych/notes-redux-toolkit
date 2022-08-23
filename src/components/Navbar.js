@@ -18,7 +18,9 @@ const Navbar = () => {
 }
 
 const Wrapper = styled.div`
+  font-family: 'Ubuntu', sans-serif;
   background: rgba(238, 238, 238, 0.3);
+  margin-bottom: 1rem;
   .nav-content {
     width: 90vw;
     max-width: 1170px;
@@ -32,6 +34,7 @@ const Wrapper = styled.div`
     font-size: 1.25rem;
     text-transform: capitalize;
     padding: 10px;
+    border-radius: 10px;
     background: var(--black);
     color: var(--white);
   }
