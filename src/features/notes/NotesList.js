@@ -1,10 +1,13 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import { noteDeleted } from './notesSlice'
 
 const NotesList = () => {
-  const notes = useSelector((state) => state.notes)
+  const dispatch = useDispatch()
+
+  const notes = useSelector((state) => state.notes.notes)
 
   return (
     <Wrapper>

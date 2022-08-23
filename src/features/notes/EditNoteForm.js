@@ -8,7 +8,7 @@ const EditNoteForm = () => {
   const { id } = useParams()
 
   const note = useSelector((state) =>
-    state.notes.find((note) => note.id === id)
+    state.notes.notes.find((note) => note.id === id)
   )
 
   const [title, setTitle] = useState(note.title)
