@@ -31,7 +31,7 @@ const EditNoteForm = () => {
   return (
     <Wrapper>
       <h2>Изменить запись</h2>
-      <form className='add-form' onSubmit={handleSubmit}>
+      <form className='edit-form' onSubmit={handleSubmit}>
         <label htmlFor='noteTitle' className='label-title'>
           Имя записи:{' '}
         </label>
@@ -41,7 +41,7 @@ const EditNoteForm = () => {
           id='noteTitle'
           value={title}
           onChange={onTitleChanged}
-          className='addTitleInput'
+          className='editTitleInput'
         />
         <label htmlFor='noteText'>Текст: </label>
         <textarea
@@ -49,7 +49,7 @@ const EditNoteForm = () => {
           id='noteText'
           value={text}
           onChange={onTextChanged}
-          className='addTextInput'
+          className='editTextInput'
         ></textarea>
         <button type='submit' className='btn add-btn' onClick={onSaveChanges}>
           Сохранить изменения
@@ -59,6 +59,58 @@ const EditNoteForm = () => {
   )
 }
 
-const Wrapper = styled.div``
+const Wrapper = styled.div`
+  width: 90vw;
+  max-width: 700px;
+  margin: 0 auto;
+  .edit-form {
+    width: 90vw;
+    max-width: 700px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  label {
+    font-size: 1.25rem;
+  }
+  .editTitleInput {
+    width: 100%;
+    height: 40px;
+    background: rgba(155, 155, 155, 0.2);
+    border-radius: 10px;
+    padding: 10px;
+    border: none;
+    outline: none;
+    font-size: 1.25rem;
+  }
+  .editTextInput {
+    resize: none;
+    outline: none;
+    border: none;
+    background: rgba(155, 155, 155, 0.2);
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    padding: 10px;
+    width: 100%;
+    height: 50px;
+    font-weight: 100;
+    font-size: 1.15rem;
+  }
+  .btn {
+    cursor: pointer;
+    border: none;
+    padding: 10px 30px;
+    font-size: 1rem;
+    background: var(--black);
+    color: var(--gold);
+    font-weight: bold;
+  }
+  .btn:hover {
+    background: var(--dark-red);
+  }
+`
 
 export default EditNoteForm
