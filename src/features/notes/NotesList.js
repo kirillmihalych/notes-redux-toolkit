@@ -15,7 +15,7 @@ const NotesList = () => {
         return (
           <article key={note.id}>
             <h3>Имя: {note.title}</h3>
-            <p>Текст: {note.content.substring(0, 100)}</p>
+            <p>Содержание: {note.content.substring(0, 100)}</p>
             <Link to={`/notes/${note.id}`}>Клик</Link>
           </article>
         )

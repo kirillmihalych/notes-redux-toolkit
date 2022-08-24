@@ -1,18 +1,22 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+const getFromLocalStorage = () => {
+  let localStorageNotes = localStorage.getItem('notes')
+  if (localStorageNotes) {
+    return JSON.parse(localStorageNotes)
+  } else {
+    return [
+      {
+        id: '1',
+        title: 'Я тут первая запись!',
+        content: 'А я тут первый текст!',
+      },
+    ]
+  }
+}
+
 const initialState = {
-  notes: [
-    {
-      id: '1',
-      title: 'first note!',
-      content: 'hello',
-    },
-    {
-      id: '2',
-      title: 'second note!',
-      content: 'i am a note',
-    },
-  ],
+  notes: getFromLocalStorage(),
 }
 
 const notesSlice = createSlice({
@@ -21,6 +25,8 @@ const notesSlice = createSlice({
   reducers: {
     noteAdded(state, action) {
       state.notes = [...state.notes, action.payload]
+
+      localStorage.setItem('notes', JSON.stringify(state.notes))
     },
     noteEdited(state, action) {
       const { id, title, text } = action.payload
