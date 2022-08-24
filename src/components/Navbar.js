@@ -20,11 +20,13 @@ const Navbar = () => {
 const Wrapper = styled.div`
   font-family: 'Ubuntu', sans-serif;
   background: rgba(238, 238, 238, 0.3);
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   .nav-content {
     width: 90vw;
-    max-width: 1170px;
+    max-width: 700px;
     margin: 0 auto;
+    padding: 15px 0;
   }
   .nav-links {
     display: flex;

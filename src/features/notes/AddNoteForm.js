@@ -63,6 +63,7 @@ const AddNoteForm = () => {
 const Wrapper = styled.div`
   font-family: 'Ubuntu', sans-serif;
   text-align: center;
+  margin-bottom: 3rem;
   .add-form {
     width: 90vw;
     max-width: 700px;
