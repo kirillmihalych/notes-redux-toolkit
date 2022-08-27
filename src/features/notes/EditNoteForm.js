@@ -3,13 +3,13 @@ import styled from 'styled-components'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams, useNavigate } from 'react-router-dom'
 import { noteEdited } from './notesSlice'
+import { selectAllNotes } from './notesSlice'
 
 const EditNoteForm = () => {
   const { id } = useParams()
+  const notes = useSelector(selectAllNotes)
 
-  const note = useSelector((state) =>
-    state.notes.notes.find((note) => note.id === id)
-  )
+  const note = notes.find((note) => note.id === id)
 
   const [title, setTitle] = useState(note.title)
   const [text, setText] = useState(note.content)
