@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, nanoid } from '@reduxjs/toolkit'
 
 const getFromLocalStorage = () => {
   let localStorageNotes = localStorage.getItem('notes')
@@ -23,10 +23,21 @@ const notesSlice = createSlice({
   name: 'notes',
   initialState,
   reducers: {
-    noteAdded(state, action) {
-      state.notes = [...state.notes, action.payload]
+    noteAdded: {
+      reducer(state, action) {
+        state.notes = [...state.notes, action.payload]
 
-      localStorage.setItem('notes', JSON.stringify(state.notes))
+        localStorage.setItem('notes', JSON.stringify(state.notes))
+      },
+      prepare(title, content) {
+        return {
+          payload: {
+            id: nanoid(),
+            title,
+            content,
+          },
+        }
+      },
     },
     noteEdited(state, action) {
       const { id, title, text } = action.payload

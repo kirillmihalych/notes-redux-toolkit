@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { nanoid } from '@reduxjs/toolkit'
 import styled from 'styled-components'
 
-import notesSlice, { noteAdded } from './notesSlice'
+import { noteAdded } from './notesSlice'
 
 const AddNoteForm = () => {
   const [title, setTitle] = useState('')
@@ -16,9 +15,8 @@ const AddNoteForm = () => {
   const onTextChanged = (e) => setText(e.target.value)
 
   const onAddNoteClicked = () => {
-    const id = nanoid()
     if (title && text) {
-      dispatch(noteAdded({ id, title, content: text }))
+      dispatch(noteAdded(title, text))
     }
 
     setTitle('')
