@@ -3,13 +3,12 @@ import styled from 'styled-components'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams, useNavigate } from 'react-router-dom'
 import { noteEdited } from './notesSlice'
-import { selectAllNotes } from './notesSlice'
+import { selectSingleNote } from './notesSlice'
 
 const EditNoteForm = () => {
   const { id } = useParams()
-  const notes = useSelector(selectAllNotes)
 
-  const note = notes.find((note) => note.id === id)
+  const note = useSelector((state) => selectSingleNote(state, id))
 
   const [title, setTitle] = useState(note.title)
   const [text, setText] = useState(note.content)

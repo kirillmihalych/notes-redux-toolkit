@@ -1,4 +1,4 @@
-import { createSlice, nanoid } from '@reduxjs/toolkit'
+import { createSlice, nanoid, createSelector } from '@reduxjs/toolkit'
 
 const getFromLocalStorage = () => {
   let localStorageNotes = localStorage.getItem('notes')
@@ -59,6 +59,11 @@ const notesSlice = createSlice({
 })
 
 export const selectAllNotes = (state) => state.notes.notes
+
+export const selectSingleNote = createSelector(
+  [selectAllNotes, (state, noteId) => noteId],
+  (notes, noteId) => notes.find((note) => note.id === noteId)
+)
 
 export const { noteAdded, noteEdited, noteDeleted } = notesSlice.actions
 
